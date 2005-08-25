@@ -1,6 +1,4 @@
 Revision history for Perl extension HTTP::Client.
 
-0.01  Tue Aug 23 13:27:29 2005
-	- original version; created by h2xs 1.23 with options
-		-aXn HTTP::Client
-
+1.43  Tue Aug 23 13:27:29 2005
+	- original version
