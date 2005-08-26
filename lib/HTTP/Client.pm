@@ -30,7 +30,7 @@ sub new {
 
 sub get {
    my $self = shift;
-   my $uri = shift; #URL to get.
+   my $uri = shift;
    $uri =~ s/#//; #get rid of fragment, according to RFC 2616
    $uri .= "/" unless ($uri =~ m#/$#); #add slash.
    my $request = $http->request($uri) or croak "Can't get $uri; may be a result of a bad hostname: $!"; #get it.
@@ -40,7 +40,15 @@ sub get {
    return $http->body if ($http->body and $fullmessage =~ /200 OK/);
    #return the message if the message isn't 200 OK, and there is no body.
    return $fullmessage unless ($fullmessage eq '200 OK' and $http->body);
+   
+   unless (-e $file) {
+      open(FILE, ">$file");
+      print FILE $http->body;
+   } else {
+      carp "Won't overwrite existing $file!";
+   }
 }
+      
 
 sub response_headers {
    my $self = shift;
@@ -86,7 +94,8 @@ sub content_encoding { my $self = shift; $http->get_header('Content-Encoding') }
 sub content_length   { my $self = shift; $http->get_header('Content-Length')   }
 sub warning          { my $self = shift; $http->get_header('Warning')          }
 sub title            { my $self = shift; $http->get_header('Title')            }
-
+sub date             { my $self = shift; $http->get_header('Date')             }
+sub host             { my $self = shift; $http->get_header('Host')             }
 
 1;
 
@@ -287,7 +296,16 @@ returns the Warning header sent be the server.
 =item $client->title
 
 returns the Title header sent by the server.
+
 Note: I<This is no longer part of the HTTP specification.>
+
+=item $client->date
+
+returns the Date header returned by the server.
+
+=item $client->host
+
+returns the Host header returned by the server.
 
 =back
 
@@ -295,15 +313,17 @@ Note: I<This is no longer part of the HTTP specification.>
 
 a real world example for getting documents would be:
 
+
  use HTTP::Client;
- my $client = HTTP::Client->new("GetBot/1.0", "nightcat\@crocker.com");
+ my $client = HTTP::Client->new("GetBot/1.0");
  my $url = shift || <STDIN>;
- my $site = $client->get($url) or die $client->status_message;
- print "\n" . $client->agent . "got $url successfully.";
+ chomp($url);
+ my $site = $client->get($url);
+ print "\n" . $client->agent . " got $url successfully.";
  print "\n\nHeaders Recieved:\n";
- my @headers = response_headers;
- print "$headers[$_]" foreach (0..$#headers);
- print "\n\n";
+ my @headers = $client->response_headers;
+ print "$headers[$_]\n" foreach (0..$#headers);
+ print "\nBody of document:\n\n";
  print $site . "\n\n";
 
 =head1 SEE ALSO
