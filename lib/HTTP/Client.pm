@@ -40,13 +40,6 @@ sub get {
    return $http->body if ($http->body and $fullmessage =~ /200 OK/);
    #return the message if the message isn't 200 OK, and there is no body.
    return $fullmessage unless ($fullmessage eq '200 OK' and $http->body);
-   
-   unless (-e $file) {
-      open(FILE, ">$file");
-      print FILE $http->body;
-   } else {
-      carp "Won't overwrite existing $file!";
-   }
 }
       
 
