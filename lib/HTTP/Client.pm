@@ -7,7 +7,7 @@ use Carp;
 use HTTP::Lite;
 ##HTTP::Client
 
-our $VERSION = '1.43';
+our $VERSION = '1.52';
 
 #array of headers sendable for requests.
 
@@ -32,7 +32,6 @@ sub get {
    my $self = shift;
    my $uri = shift;
    $uri =~ s/#//; #get rid of fragment, according to RFC 2616
-   $uri .= "/" unless ($uri =~ m#/$#); #add slash.
    my $request = $http->request($uri) or croak "Can't get $uri; may be a result of a bad hostname: $!"; #get it.
    
    my $fullmessage = $http->status . ' ' . $http->status_message; #full status message.
