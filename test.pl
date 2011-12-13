@@ -10,13 +10,13 @@ sub test;
 
 sub client_test {
    my $client = HTTP::Client->new("Bot/1.0");
-   my $site = $client->get("http://www.cpan.org");
+   my $site = $client->get("http://www.cpan.org/");
    return 1 if ($client->status_message =~ /200 OK/);
 }
 
 sub header_test {
    my $client = HTTP::Client->new("NewBot/1.0");
-   my $site = $client->get("http://www.cpan.org");
+   my $site = $client->get("http://www.cpan.org/");
    my @headers = $client->response_headers;
    return 1 if (@headers);
 }
