@@ -1,4 +1,16 @@
-Revision history for Perl extension HTTP::Client.
+Revision history for Perl module HTTP::Client
 
-1.43  Tue Aug 23 13:27:29 2005
+1.52 2012-01-15
+
+    - Neil Bowers took over maintenance
+    - removed code which referred to an undeclared variable in get() method
+    - the get() method was always appending a '/' to the URL, which caused
+      an URL containing a filename to fail.
+    - the testsuite didn't include a trailing '/' on the test URL, so once
+      the previous hack was removed, the testsuite failed. This is due to
+      a limitation in HTTP::Lite
+    - Formatted this file according to CPAN::Changes::Spec
+
+1.43 2005-08-23
+
 	- original version
