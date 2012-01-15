@@ -5,7 +5,6 @@ use strict;
 use warnings;
 use Carp;
 use HTTP::Lite;
-##HTTP::Client
 
 our $VERSION = '1.52';
 
@@ -95,14 +94,14 @@ __END__
 
 =head1 NAME
 
-HTTP::Client - Class for creating HTTP clients.
+HTTP::Client - Class for making HTTP requests
 
 =head1 SYNOPSIS
 
   use HTTP::Client;
   
-  my $client = HTTP::Client->new();
-  my $site   = $client->get("http://www.cpan.org");
+  my $client  = HTTP::Client->new();
+  my $site    = $client->get("http://www.cpan.org");
   my @headers = $client->response_headers;
   my $agent   = $client->agent;
   print $agent . "\n";
@@ -123,8 +122,7 @@ get HTTP response headers and get documents.
 
 =item new
 
-this is the constructor
-for HTTP::Client.
+This is the constructor for HTTP::Client.
 It can be called like this:
 
    my $client = HTTP::Client->new;
@@ -305,7 +303,6 @@ returns the Host header returned by the server.
 
 a real world example for getting documents would be:
 
-
  use HTTP::Client;
  my $client = HTTP::Client->new("GetBot/1.0");
  my $url = shift || <STDIN>;
@@ -324,11 +321,13 @@ L<HTTP::Lite>, L<LWP::UserAgent>
 
 =head1 AUTHOR
 
+As of 1.52, this module is now maintained by Neil Bowers E<lt>neilb@cpan.orgE<gt>.
+
 Nightcat, E<lt>nightcat@crocker.comE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2005 by <nightcat>
+Copyright (C) 2005 by E<lt>nightcatE<gt>
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.8.6 or,
