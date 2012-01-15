@@ -5,7 +5,10 @@ use ExtUtils::MakeMaker;
 WriteMakefile(
     NAME              => 'HTTP::Client',
     VERSION_FROM      => 'lib/HTTP/Client.pm', # finds $VERSION
-    PREREQ_PM         => {HTTP::Lite => 0}, # e.g., Module::Name => 1.1
+    PREREQ_PM         => {
+                          'HTTP::Lite' => 0,
+                          'Carp'       => 0,
+                         },
     ($] >= 5.005 ?     ## Add these new keywords supported since 5.005
       (ABSTRACT_FROM  => 'lib/HTTP/Client.pm', # retrieve abstract from module
        AUTHOR         => 'Nightcat <nightcat@crocker.com>') : ()),
