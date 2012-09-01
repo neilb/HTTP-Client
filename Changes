@@ -1,5 +1,10 @@
 Revision history for Perl module HTTP::Client
 
+1.53 2012-09-01
+
+    - Updated Documentation and Makefile.PL to acknowledge the original
+      author (Lincoln Ombelets), now I know who he is.
+
 1.52 2012-01-15
 
     - Neil Bowers took over maintenance

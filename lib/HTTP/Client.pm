@@ -6,7 +6,7 @@ use warnings;
 use Carp;
 use HTTP::Lite;
 
-our $VERSION = '1.52';
+our $VERSION = '1.53';
 
 #array of headers sendable for requests.
 
@@ -317,17 +317,23 @@ a real world example for getting documents would be:
 
 =head1 SEE ALSO
 
-L<HTTP::Lite>, L<LWP::UserAgent>
+L<http://neilb.org/reviews/http-requesters.html> - a review of CPAN modules
+for making HTTP requests.
+
+In short, you should consider one of the following modules:
+L<HTTP::Tiny>, L<LWP::UserAgent>, L<Furl>, L<Mojo::UserAgent>, L<LWP::Curl>,
+L<Net::Curl>.
 
 =head1 AUTHOR
 
-As of 1.52, this module is now maintained by Neil Bowers E<lt>neilb@cpan.orgE<gt>.
+As of 1.52,
+this module is now maintained by Neil Bowers E<lt>neilb@cpan.orgE<gt>.
 
-Nightcat, E<lt>nightcat@crocker.comE<gt>
+HTTP::Client was written by Lincoln Ombelets E<lt>lincdog85@gmail.comE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2005 by E<lt>nightcatE<gt>
+Copyright (C) 2005-2012 Lincoln Ombelets.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.8.6 or,
