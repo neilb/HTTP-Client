@@ -1,5 +1,11 @@
 Revision history for Perl module HTTP::Client
 
+1.54 2012-09-27
+
+    - Fixed bug where doing multiple requests with the same instance
+      would return all results from previous requests concatenated together.
+      RT#79889 reported by Alex K.
+
 1.53 2012-09-01
 
     - Updated Documentation and Makefile.PL to acknowledge the original

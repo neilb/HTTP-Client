@@ -6,7 +6,7 @@ use warnings;
 use Carp;
 use HTTP::Lite;
 
-our $VERSION = '1.53';
+our $VERSION = '1.54';
 
 #array of headers sendable for requests.
 
@@ -31,8 +31,10 @@ sub get {
    my $self = shift;
    my $uri = shift;
    $uri =~ s/#//; #get rid of fragment, according to RFC 2616
-   my $request = $http->request($uri) or croak "Can't get $uri; may be a result of a bad hostname: $!"; #get it.
+   my $request;
    
+   $http->reset();
+   $request = $http->request($uri) or croak "Can't get $uri; may be a result of a bad hostname: $!"; #get it.
    my $fullmessage = $http->status . ' ' . $http->status_message; #full status message.
    #give them the body of the request if it has a body and sent an OK response.
    return $http->body if ($http->body and $fullmessage =~ /200 OK/);
