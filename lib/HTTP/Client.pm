@@ -6,7 +6,7 @@ use warnings;
 use Carp;
 use HTTP::Lite;
 
-our $VERSION = '1.54';
+our $VERSION = '1.55';
 
 #array of headers sendable for requests.
 
