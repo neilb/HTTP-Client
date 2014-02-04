@@ -2,6 +2,8 @@ Revision history for Perl module HTTP::Client
 
 1.56 2014-02-04
 
+    - Moved testsuite (such as it is) into t/,
+      and refactored to use Test::More
     - Min perl version 5.6.0 (was set to 5.8)
     - Added min perl version to metadata
 
