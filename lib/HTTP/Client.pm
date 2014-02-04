@@ -32,7 +32,7 @@ sub get {
    my $uri = shift;
    $uri =~ s/#//; #get rid of fragment, according to RFC 2616
    my $request;
-   
+
    $http->reset();
    $request = $http->request($uri) or croak "Can't get $uri; may be a result of a bad hostname: $!"; #get it.
    my $fullmessage = $http->status . ' ' . $http->status_message; #full status message.
@@ -41,7 +41,7 @@ sub get {
    #return the message if the message isn't 200 OK, and there is no body.
    return $fullmessage unless ($fullmessage eq '200 OK' and $http->body);
 }
-      
+
 
 sub response_headers {
    my $self = shift;
@@ -128,7 +128,7 @@ This is the constructor for HTTP::Client.
 It can be called like this:
 
    my $client = HTTP::Client->new;
-   
+
 or this:
 
    my $client = new HTTP::Client ();
@@ -137,14 +137,14 @@ it can take the useragent string as
 an argument like this:
 
    my $client = HTTP::Client->new("Bot/1.0");
-   
+
 If the useragent is supplied in
 the constructor, but then supplied
-in the L</agent> method, the
+in the C<agent()> method, the
 constructor will be authoritative.
 In other words, you can only override
 the already specified client
-name by using only L</agent> methods,
+name by using only C<agent> methods,
 and not the constructor. (This is
 actually a bug.)
 
@@ -162,11 +162,11 @@ For example:
 
    my $site = $client->get("http://www.cpan.org");
    print $site . "\n"; 
-   
+
 prints the source of cpan.org or the status code if 
 it could not find it. It will append a trailing 
 slash to the URL if it doesn't end in one.
-   
+
 =item $client->response_headers
 
 B<response_headers> returns an array
@@ -180,36 +180,32 @@ use this construct:
  foreach (0..$#headers) {
     print $headers[$_] . "\n";
  }
- 
+
 this is a big bug.
 
 =item $client->agent
 
-B<agent> sets th current User-Agent
-header, thus renaming the current
-client. If the agent was specified in
-the constructor, even using this
-method will not override the
+B<agent> sets the current User-Agent header,
+thus renaming the current client.
+If the agent was specified in the constructor,
+even using this method will not override the
 one specified in the constructor.
-So, you can only override your
-useragent with multiple
-agent()s, not with the
-constructor and then agent()s.
+So, you can only override your useragent with multiple agent()s,
+not with the constructor and then agent()s.
 For example:
 
  my $client = HTTP::Client->new("Bot/1.0");
  my $site = $client->get("http://www.cpan.org");
  $client->agent("NewBot/1.0"); #Wrong! agent is still "Bot/1.0"
- 
+
 is wrong but this:
 
  my $client = HTTP::Client->new;
  my $site = $client->get("http://www.cpan.org");
  $client->agent("NewBot/1.0"); #Right! useragent is NewBot/1.0!
  $client->agent("NewNewBot/1.0"); #Right! useragent is now NewNewBot/1.0!
- 
-is right and changes the useragent after the second
-call.
+
+is right and changes the useragent after the second call.
 
 =item $client->from
 
@@ -227,14 +223,14 @@ For example:
  my $client = HTTP::Client->new("Bot/1.1", "nightcat\@crocker.com");
  my $site = $client->get("http://www.cpan.org");
  $client->from("au\@th.or"); #Wrong! From is still nightcat@crocker.com!
- 
+
 doesn't work, but this:
 
  my $client = HTTP::Client->new;
  my $site = $client->get("http://www.cpan.org");
  $client->from("nightcat\@crocker.com"); #Right! From is nightcat@crocker.com!
  $client->from("au\@th.or"); #Right! From is now au@th.or!
- 
+
 does. Note that you have to escape the at sign (@) in the
 address if you are using double quotes, because otherwise
 it will be interpreted as an array.
@@ -248,7 +244,7 @@ For example:
 
  my $site = $client->get("http://www.cpan.org");
  print $client->status_message;
- 
+
 prints "200 OK". Note that
 if here, and anywhere else
 when getting a site,
