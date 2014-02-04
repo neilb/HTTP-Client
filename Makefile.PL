@@ -48,7 +48,8 @@ WriteMakefile(
 
     ($mm_ver >= 6.64
         ? (TEST_REQUIRES => {
-                'Test::More' => 0.88,
+                'LWP::Online' => 0,
+                'Test::More'  => 0.88,
           })
         : ()
     ),

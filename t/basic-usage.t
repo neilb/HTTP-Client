@@ -2,13 +2,17 @@
 
 use strict;
 use warnings;
+use LWP::Online ':skip_all';
 use Test::More 0.88 tests => 3;
 
 require_ok('HTTP::Client');
 
-ok(client_test(), "check that GET works");
-ok(header_test(), "check headers");
+SKIP: {
 
+    ok(client_test(), "check that GET works");
+    ok(header_test(), "check headers");
+
+}
 
 sub client_test {
    my $client = HTTP::Client->new("Bot/1.0");
