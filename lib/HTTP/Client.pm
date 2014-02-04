@@ -326,6 +326,10 @@ In short, you should consider one of the following modules:
 L<HTTP::Tiny>, L<LWP::UserAgent>, L<Furl>, L<Mojo::UserAgent>, L<LWP::Curl>,
 L<Net::Curl>.
 
+=head1 REPOSITORY
+
+L<https://github.com/neilbowers/HTTP-Client>
+
 =head1 AUTHOR
 
 As of 1.52,
