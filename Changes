@@ -6,6 +6,7 @@ Revision history for Perl module HTTP::Client
       and refactored to use Test::More
     - Min perl version 5.6.0 (was set to 5.8)
     - Added min perl version to metadata
+    - Added strict and warnings to PREREQ_PM
 
 1.55 2013-11-10
 

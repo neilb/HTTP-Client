@@ -15,6 +15,8 @@ WriteMakefile(
     PREREQ_PM         => {
                           'HTTP::Lite' => 0,
                           'Carp'       => 0,
+                          'strict'     => 0,
+                          'warnings'   => 0,
                          },
     ($] >= 5.005 ?     ## Add these new keywords supported since 5.005
       (ABSTRACT_FROM  => 'lib/HTTP/Client.pm', # retrieve abstract from module
