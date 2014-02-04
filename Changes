@@ -1,5 +1,10 @@
 Revision history for Perl module HTTP::Client
 
+1.56 2014-02-04
+
+    - Min perl version 5.6.0 (was set to 5.8)
+    - Added min perl version to metadata
+
 1.55 2013-11-10
 
     - Specified license as 'perl' in metadata (via Makefile.PL)

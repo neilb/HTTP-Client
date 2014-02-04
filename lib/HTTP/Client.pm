@@ -1,12 +1,12 @@
 package HTTP::Client;
 
-use 5.8.0; #or higher
+use 5.006;
 use strict;
 use warnings;
 use Carp;
 use HTTP::Lite;
 
-our $VERSION = '1.55';
+our $VERSION = '1.56';
 
 #array of headers sendable for requests.
 
